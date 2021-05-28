@@ -5,30 +5,26 @@ import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate
-import javax.validation.constraints.NotNull
 
 @Data
 @Document(collection = "providers")
 class ProviderEntity(
     @Id
-    var id: String? = ObjectId.get().toHexString(),
+    var id: String = ObjectId.get().toHexString(),
 
-    @NotNull
     val accountId: String?,
 
-    @NotNull
     var name: String?,
 
-    @NotNull
-    var since: LocalDate? = LocalDate.now(),
+    var since: LocalDate?,
 
-    @NotNull
     var description: String?,
 
-    @NotNull
-    var address: Address? = Address(),
+    var address: Address = Address(),
+
+    var openingHours: MutableSet<OpeningHours>? = mutableSetOf(),
 
     var dashboard: Dashboard? = Dashboard(),
 
-    var inventory: Set<GreenBag>? = setOf()
+    var inventory: MutableSet<GreenBag> = mutableSetOf()
 )
