@@ -20,7 +20,7 @@ class ProviderEntity(
 
     var description: String?,
 
-    var address: Address = Address(),
+    var address: Address,
 
     var openingHours: MutableSet<OpeningHours>? = mutableSetOf(),
 

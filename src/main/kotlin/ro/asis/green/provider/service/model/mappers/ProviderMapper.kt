@@ -3,6 +3,7 @@ package ro.asis.green.provider.service.model.mappers
 import org.springframework.stereotype.Component
 import ro.asis.green.provider.service.model.api.dto.ProviderDto
 import ro.asis.green.provider.service.model.entity.Address
+import ro.asis.green.provider.service.model.entity.Dashboard
 import ro.asis.green.provider.service.model.entity.ProviderEntity
 
 @Component
@@ -31,7 +32,7 @@ class ProviderMapper : Mapper<ProviderDto, ProviderEntity> {
             description = source.description,
             address = source.address ?: Address(),
             openingHours = source.openingHours,
-            dashboard = source.dashboard,
+            dashboard = source.dashboard ?: Dashboard(),
             inventory = source.inventory ?: mutableSetOf()
         )
     }
